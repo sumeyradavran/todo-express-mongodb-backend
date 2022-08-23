@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 var cors = require('cors')
 require('./models/Todos')
 
-require('./dotenv')
+require('./dotEnv')
 
 mongoose
   .connect(process.env.DB_CONNECT)
