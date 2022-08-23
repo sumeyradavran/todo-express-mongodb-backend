@@ -5,7 +5,10 @@ require('./models/Todos')
 
 require('./dotenv')
 
-mongoose.connect(process.env.DB_CONNECT)
+mongoose
+  .connect(process.env.DB_CONNECT)
+  .then(() => console.log('connected'))
+  .catch((err) => console.log('err', err))
 const app = express()
 
 app.use(express.json())
