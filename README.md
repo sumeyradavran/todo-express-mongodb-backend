@@ -8,3 +8,5 @@ To connect a database, create .env file and assign a value for DB_CONNECT
 ```js
 DB_CONNECT=your db access token
 ```
+
+Server is uploaded to https://express-todo-mongodb.herokuapp.com/todos
