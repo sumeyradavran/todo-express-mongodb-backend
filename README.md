@@ -10,3 +10,5 @@ DB_CONNECT=your db access token
 ```
 
 Server is uploaded to https://express-todo-mongodb.herokuapp.com/todos
+
+Swagger documentation is at https://express-todo-mongodb.herokuapp.com/api-docs/
