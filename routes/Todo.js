@@ -30,7 +30,7 @@ module.exports = (app) => {
       res.status(400).json(err)
     }
   })
-  app.put('/todos/:id', async (req, res) => {
+  app.patch('/todos/:id', async (req, res) => {
     try {
       await Todos.findByIdAndUpdate(req.params.id, req.body)
       const todo = await Todos.findById(req.params.id)

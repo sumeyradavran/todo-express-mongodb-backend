@@ -62,7 +62,7 @@
           "type": "string"
         }
       ],
-      "put": {
+      "patch": {
         "summary": "Update todo with give ID",
         "tags": ["Todos"],
         "parameters": [
