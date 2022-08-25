@@ -102,7 +102,7 @@
     "Todo": {
       "required": ["id", "definition"],
       "properties": {
-        "_id": {
+        "id": {
           "type": "integer",
           "uniqueItems": true
         },
