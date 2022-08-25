@@ -67,7 +67,10 @@
     },
     "/todos/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Todo"
+        ],
+        "description": "Endpoint to get the todo",
         "parameters": [
           {
             "name": "id",
@@ -116,7 +119,10 @@
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Todo"
+        ],
+        "description": "Endpoint to delete the todo",
         "parameters": [
           {
             "name": "id",

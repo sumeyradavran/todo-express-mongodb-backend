@@ -15,6 +15,8 @@ module.exports = (app) => {
   })
 
   app.get('/todos/:id', async (req, res) => {
+    /*  #swagger.tags = ['Todo']
+          #swagger.description = 'Endpoint to get the todo' */
     Todos.findById(req.params.id)
       .then((todos) => {
         res.send(todos)
@@ -59,6 +61,8 @@ module.exports = (app) => {
     }
   })
   app.delete('/todos/:id', async (req, res) => {
+    /*  #swagger.tags = ['Todo']
+          #swagger.description = 'Endpoint to delete the todo' */
     try {
       await Todos.findOneAndDelete(req.params.id)
       res.send(req.params.id)
