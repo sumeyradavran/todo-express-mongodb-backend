@@ -13,6 +13,7 @@ const app = express()
 
 app.use(express.json())
 app.use(cors())
+require('./swagger')(app)
 
 require('./routes/Todo')(app)
 

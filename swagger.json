@@ -1,0 +1,145 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My Todo Project CRUD",
+    "description": "My Todo Project Application API"
+  },
+  "tags": [
+    {
+      "name": "Todos",
+      "description": "API for todos"
+    }
+  ],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "schemes": ["http", "https"],
+  "paths": {
+    "/todos": {
+      "get": {
+        "tags": ["Todos"],
+        "summary": "Get all todos",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Todos"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Todos"],
+        "summary": "Create new todo",
+        "parameters": [
+          {
+            "name": "todo",
+            "in": "body",
+            "description": "Todo create",
+            "schema": {
+              "$ref": "#/definitions/AddTodo"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New todo is created",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        }
+      }
+    },
+    "/todos/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of todo that we want to find",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Update todo with give ID",
+        "tags": ["Todos"],
+        "parameters": [
+          {
+            "name": "todo",
+            "in": "body",
+            "description": "Todo with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo is updated",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete todo with give ID",
+        "tags": ["Todos"],
+        "responses": {
+          "200": {
+            "description": "Todo is deleted",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Todo": {
+      "required": ["id", "definition"],
+      "properties": {
+        "_id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "done": {
+          "type": "boolean"
+        },
+        "definition": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        }
+      }
+    },
+    "Todos": {
+      "type": "array",
+      "$ref": "#/definitions/Todo"
+    },
+    "AddTodo": {
+      "required": ["definition"],
+      "properties": {
+        "done": {
+          "type": "boolean"
+        },
+        "definition": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
