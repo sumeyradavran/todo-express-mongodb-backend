@@ -5,94 +5,121 @@
     "title": "My Todo Project CRUD",
     "description": "My Todo Project Application API"
   },
+  "host": "localhost:8000",
+  "basePath": "/",
   "tags": [
     {
-      "name": "Todos",
+      "name": "Todo",
       "description": "API for todos"
     }
   ],
-  "consumes": ["application/json"],
-  "produces": ["application/json"],
-  "schemes": ["http", "https"],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
   "paths": {
     "/todos": {
       "get": {
-        "tags": ["Todos"],
-        "summary": "Get all todos",
+        "tags": [
+          "Todo"
+        ],
+        "description": "Endpoint to get the todos",
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Todos"
-            }
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
       "post": {
-        "tags": ["Todos"],
-        "summary": "Create new todo",
+        "tags": [
+          "Todo"
+        ],
+        "description": "Endpoint to add a todo",
         "parameters": [
           {
-            "name": "todo",
+            "name": "obj",
             "in": "body",
-            "description": "Todo create",
+            "description": "Todo information.",
             "schema": {
               "$ref": "#/definitions/AddTodo"
             }
           }
         ],
-        "produces": ["application/json"],
         "responses": {
           "200": {
-            "description": "New todo is created",
-            "schema": {
-              "$ref": "#/definitions/Todo"
-            }
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
     },
     "/todos/{id}": {
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "description": "ID of todo that we want to find",
-          "type": "string"
-        }
-      ],
-      "patch": {
-        "summary": "Update todo with give ID",
-        "tags": ["Todos"],
+      "get": {
+        "description": "",
         "parameters": [
           {
-            "name": "todo",
-            "in": "body",
-            "description": "Todo with new values of properties",
-            "schema": {
-              "$ref": "#/definitions/Todo"
-            }
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
           "200": {
-            "description": "Todo is updated",
-            "schema": {
-              "$ref": "#/definitions/Todo"
-            }
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
       "delete": {
-        "summary": "Delete todo with give ID",
-        "tags": ["Todos"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Todo is deleted",
-            "schema": {
-              "type": "string"
-            }
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -100,46 +127,60 @@
   },
   "definitions": {
     "Todo": {
-      "required": ["id", "definition"],
+      "type": "object",
       "properties": {
         "id": {
-          "type": "integer",
-          "uniqueItems": true
-        },
-        "done": {
-          "type": "boolean"
+          "type": "string",
+          "example": "id"
         },
         "definition": {
-          "type": "string"
+          "type": "string",
+          "example": "definition"
         },
         "comment": {
-          "type": "string"
+          "type": "string",
+          "example": "commen"
         },
         "date": {
-          "type": "string"
+          "type": "string",
+          "example": "2022-08-25T12:25:36.874Z"
+        },
+        "done": {
+          "type": "boolean",
+          "example": true
         }
-      }
+      },
+      "required": [
+        "id",
+        "definition"
+      ]
     },
     "Todos": {
-      "type": "array",
       "$ref": "#/definitions/Todo"
     },
     "AddTodo": {
-      "required": ["definition"],
+      "type": "object",
       "properties": {
         "done": {
-          "type": "boolean"
+          "type": "boolean",
+          "example": true
         },
         "definition": {
-          "type": "string"
+          "type": "string",
+          "example": "definition"
         },
         "comment": {
-          "type": "string"
+          "type": "string",
+          "example": "commen"
         },
         "date": {
-          "type": "string"
+          "type": "string",
+          "example": "2022-08-25T12:25:36.874Z"
         }
-      }
+      },
+      "required": [
+        "definition"
+      ]
     }
   }
 }

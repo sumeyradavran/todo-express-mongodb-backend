@@ -1,7 +1,10 @@
 const mongoose = require('mongoose')
 const Todos = mongoose.model('Todos')
+
 module.exports = (app) => {
   app.get('/todos', async (req, res) => {
+      /*  #swagger.tags = ['Todo']
+          #swagger.description = 'Endpoint to get the todos' */
     Todos.find({})
       .then((todos) => {
         res.send(todos)
@@ -22,6 +25,14 @@ module.exports = (app) => {
   })
 
   app.post('/todos', async (req, res) => {
+    /* 	#swagger.tags = ['Todo']
+        #swagger.description = 'Endpoint to add a todo' */
+
+    /*	#swagger.parameters['obj'] = {
+            in: 'body',
+            description: 'Todo information.',
+            schema: { $ref: "#/definitions/AddTodo" }
+    } */
     const todo = new Todos(req.body)
     try {
       const newTodo = await todo.save()
