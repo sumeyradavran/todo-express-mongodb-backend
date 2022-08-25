@@ -42,6 +42,14 @@ module.exports = (app) => {
     }
   })
   app.patch('/todos/:id', async (req, res) => {
+    /* 	#swagger.tags = ['Todo']
+        #swagger.description = 'Endpoint to update a todo' */
+
+    /*	#swagger.parameters['obj'] = {
+            in: 'body',
+            description: 'Todo information.',
+            schema: { $ref: "#/definitions/Todo" }
+    } */
     try {
       await Todos.findByIdAndUpdate(req.params.id, req.body)
       const todo = await Todos.findById(req.params.id)

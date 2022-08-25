@@ -86,13 +86,24 @@
         }
       },
       "patch": {
-        "description": "",
+        "tags": [
+          "Todo"
+        ],
+        "description": "Endpoint to update a todo",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Todo information.",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
           }
         ],
         "responses": {
